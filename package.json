@@ -12,6 +12,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^24.10.0",
+		"tsx": "^4.20.6",
 		"wrangler": "^4.46.0"
 	}
 }
