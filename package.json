@@ -11,6 +11,7 @@
 		"octokit": "^5.0.5"
 	},
 	"devDependencies": {
+		"@types/node": "^24.10.0",
 		"wrangler": "^4.46.0"
 	}
 }
