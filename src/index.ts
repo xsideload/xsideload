@@ -1,9 +1,7 @@
 import { Hono } from "hono";
 import { basicAuth } from "hono/basic-auth";
 import { Octokit } from "octokit";
-import infoFile from "../info.json" assert { type: "json" };
-
-const CONFIG = { owner: infoFile.owner, repo: infoFile.repo };
+import { assetsRepo } from "$lib/info";
 
 const app = new Hono<{
 	Bindings: CloudflareBindings;
@@ -48,7 +46,7 @@ app.get("/download/:id/:name?", async (c) => {
 	const assets = await octokit.request(
 		"HEAD /repos/{owner}/{repo}/releases/assets/{asset_id}",
 		{
-			...CONFIG,
+			...assetsRepo,
 			asset_id: +id,
 			headers: {
 				accept: "application/octet-stream"
