@@ -1,6 +1,6 @@
 import { defineBase } from "@/scripts/lib/info";
 
-export const assetsRepo = { owner: "xsideload", repo: "assets" };
+export const assetsRepo = { owner: "xsideload", repo: "assets" } as const;
 
 export const base = defineBase({
 	YouTube: {
@@ -26,9 +26,5 @@ export const base = defineBase({
 				}
 			}
 		}
-	},
-	Test: {
-		bundleIdentifier: "abc",
-		tweaks: {}
 	}
 });
