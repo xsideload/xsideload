@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { basicAuth } from "hono/basic-auth";
 import { Octokit } from "octokit";
 import { assetsRepo } from "@/info";
+import repoJson from "@/generated/repo.json" with { type: "json" };
 
 const app = new Hono<{
 	Bindings: CloudflareBindings;
@@ -38,6 +39,15 @@ app.use(
 		await next();
 	}
 );
+
+app.get("/repo.json", async (c) => {
+	return c.json({
+		name: "xsideload repo",
+		identifier: "xsideload.repo",
+		iconURL: `${c.env.BASE_URL}/icon.jpg`,
+		apps: repoJson
+	});
+});
 
 app.get("/download/:id/:name?", async (c) => {
 	const { id } = c.req.param();
