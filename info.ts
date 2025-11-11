@@ -1,4 +1,4 @@
-import { defineBase } from "@/scripts/lib/info";
+import { defineBase } from "@/scripts/lib/infoTypes";
 
 export const assetsRepo = { owner: "xsideload", repo: "assets" } as const;
 

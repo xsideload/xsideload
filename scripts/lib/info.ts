@@ -1,26 +1,7 @@
+import type { AppInfo, TweakInfo } from "@/scripts/lib/infoTypes";
 import { base } from "@/info";
 
 export { assetsRepo } from "@/info";
-
-type AppInfo = {
-	readonly bundleIdentifier: string;
-};
-
-type TweakInfo = {
-	readonly actionRepo: {
-		readonly owner: string;
-		readonly repo: string;
-		readonly basehead: string;
-	};
-};
-
-type BaseShape = {
-	[key: string]: AppInfo & { tweaks: { [key: string]: TweakInfo } };
-};
-
-export const defineBase = <const T extends BaseShape>(base: T): T => {
-	return base;
-};
 
 export type AppName = keyof typeof base;
 export type TweakName = {
