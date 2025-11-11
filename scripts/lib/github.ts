@@ -1,3 +1,4 @@
+import process from "node:process";
 import { Octokit } from "octokit";
 
 const GH_TOKEN = process.env.GH_TOKEN;
