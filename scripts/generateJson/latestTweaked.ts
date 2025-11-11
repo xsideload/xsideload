@@ -40,7 +40,7 @@ releaseLoop: for await (const { data: pageOfReleases } of releasesIterator) {
 				asset &&
 				aNewerThanB(
 					releaseInfo.appVersion,
-					result[releaseInfo.tweakName].version
+					result[releaseInfo.tweakName]?.version || ""
 				)
 			) {
 				result[releaseInfo.tweakName] = {
