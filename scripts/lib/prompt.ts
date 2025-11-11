@@ -16,6 +16,7 @@ export const prompt = async (question: string) => {
 	} finally {
 		rl.close();
 	}
+	console.log();
 	return answer;
 };
 
