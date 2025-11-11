@@ -1,3 +1,3 @@
-import { uploadDecrypted } from "./index";
+import { uploadDecrypted } from ".";
 
 await uploadDecrypted({ appName: "YouTube" });
