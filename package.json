@@ -8,7 +8,7 @@
 		"tsx": "tsx --env-file=.env"
 	},
 	"dependencies": {
-		"hono": "^4.10.4",
+		"hono": "^4.10.5",
 		"octokit": "^5.0.5"
 	},
 	"devDependencies": {
@@ -17,6 +17,6 @@
 		"jszip": "^3.10.1",
 		"plist": "^3.1.0",
 		"tsx": "^4.20.6",
-		"wrangler": "^4.46.0"
+		"wrangler": "^4.47.0"
 	}
 }
