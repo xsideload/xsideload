@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { basicAuth } from "hono/basic-auth";
 import { Octokit } from "octokit";
-import { assetsRepo } from "$lib/info";
+import { assetsRepo } from "@/info";
 
 const app = new Hono<{
 	Bindings: CloudflareBindings;
