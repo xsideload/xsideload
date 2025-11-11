@@ -19,8 +19,7 @@ export const uploadDecrypted = async ({ appName }: { appName: AppName }) => {
 
 	const release = await octokit.rest.repos.createRelease({
 		...assetsRepo,
-		tag_name: tagName,
-		make_latest: "false"
+		tag_name: tagName
 	});
 
 	if (!release.data.id) throw new Error("createRelease error");
