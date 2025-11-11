@@ -33,5 +33,10 @@ for (const [appName, appData] of Object.entries(base) as [
 
 export const getAppInfoFromTweakName = (tweakName: TweakName) => {
 	const appName = tweakNameToAppName.get(tweakName);
-	if (appName) return apps.get(appName);
+	if (appName) {
+		return {
+			name: appName,
+			...apps.get(appName)
+		};
+	}
 };
