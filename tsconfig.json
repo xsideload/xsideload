@@ -14,13 +14,12 @@
       "./worker-configuration.d.ts"
     ],
     "paths": {
-      "$lib/*": [
-        "./lib/*"
+      "@/*": [
+        "./*"
       ]
     }
   },
   "include": [
-    "src",
-    "lib"
+    "src"
   ]
 }
