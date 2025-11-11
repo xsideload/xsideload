@@ -50,7 +50,7 @@ releaseLoop: for await (const { data: pageOfReleases } of releasesIterator) {
 					localizedDescription: asset.name,
 					downloadURL: `${BASE_URL_WITH_BASIC_AUTH}/download/${asset.id}/${asset.name}`,
 					iconURL: appInfo?.bundleIdentifier
-						? `${BASE_URL}/icon/${appInfo?.bundleIdentifier}.png`
+						? `${BASE_URL}/icon/${appInfo?.bundleIdentifier}.jpg`
 						: "",
 					versionDate: asset.created_at,
 					size: asset.size
@@ -63,7 +63,12 @@ releaseLoop: for await (const { data: pageOfReleases } of releasesIterator) {
 try {
 	await writeFile(
 		`${projectRoot}/generated/repo.json`,
-		JSON.stringify(Object.values(result))
+		JSON.stringify({
+			name: "xsideload repo",
+			identifier: "xsideload.repo",
+			iconURL: `${BASE_URL}/icon.jpg`,
+			apps: Object.values(result)
+		})
 	);
 } catch (error) {
 	console.error("Error writing JSON to file:", error);

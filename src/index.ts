@@ -41,12 +41,7 @@ app.use(
 );
 
 app.get("/repo.json", async (c) => {
-	return c.json({
-		name: "xsideload repo",
-		identifier: "xsideload.repo",
-		iconURL: `${c.env.BASE_URL}/icon.jpg`,
-		apps: repoJson
-	});
+	return c.json(repoJson);
 });
 
 app.get("/download/:id/:name?", async (c) => {
