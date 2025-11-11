@@ -13,19 +13,15 @@ import { readFileSync } from "node:fs";
 export const uploadPrebuilt = async ({
 	tweakName,
 	optionalNotes,
-	getTweakVersion,
-	getAppVersion
+	getTweakVersion
 }: {
 	tweakName: TweakName;
 	optionalNotes?: string;
 	getTweakVersion?: ({ fileName }: { fileName: string }) => string;
-	getAppVersion?: ({ fileName }: { fileName: string }) => string;
 }) => {
 	const oneArg = getOneArg();
 	const filePath = resolvePath(oneArg);
-	const appVersion = getAppVersion
-		? getAppVersion({ fileName: basename(filePath) })
-		: await getIpaVersionFilePath(filePath);
+	const appVersion = await getIpaVersionFilePath(filePath);
 	console.log("- appVersion:", appVersion);
 	const tweakVersion = getTweakVersion
 		? getTweakVersion({ fileName: basename(filePath) })
