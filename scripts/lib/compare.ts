@@ -3,4 +3,4 @@ const collator = new Intl.Collator(undefined, {
 	sensitivity: "base"
 });
 
-export const sortDesc = (a: string, b: string) => collator.compare(b, a);
+export const aNewerThanB = (a: string, b: string) => collator.compare(a, b) > 0;
