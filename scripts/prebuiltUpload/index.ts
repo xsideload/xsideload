@@ -3,11 +3,11 @@ import {
 	getAppInfoFromTweakName,
 	type TweakName
 } from "@/scripts/lib/info";
-import { getOneArg } from "@/scripts/lib/args";
 import { resolvePath, basename } from "@/scripts/lib/path";
 import { confirm } from "@/scripts/lib/prompt";
 import { getIpaVersionFilePath } from "@/scripts/lib/getIpaVersion";
 import { octokit } from "@/scripts/lib/github";
+import { parseArgs } from "node:util";
 import { readFileSync } from "node:fs";
 
 export const uploadPrebuilt = async ({
@@ -19,7 +19,10 @@ export const uploadPrebuilt = async ({
 	optionalNotes?: string;
 	getTweakVersion?: ({ fileName }: { fileName: string }) => string;
 }) => {
-	const oneArg = getOneArg();
+	const { positionals } = parseArgs({ allowPositionals: true });
+	if (positionals.length !== 1) throw new Error("Missing file path");
+	const oneArg = positionals[0];
+
 	const filePath = resolvePath(oneArg);
 	const appVersion = await getIpaVersionFilePath(filePath);
 	console.log("- appVersion:", appVersion);

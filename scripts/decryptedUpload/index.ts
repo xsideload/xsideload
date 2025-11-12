@@ -1,13 +1,16 @@
 import { assetsRepo, type AppName } from "@/scripts/lib/info";
-import { getOneArg } from "@/scripts/lib/args";
 import { resolvePath, basename } from "@/scripts/lib/path";
 import { confirm } from "@/scripts/lib/prompt";
 import { getIpaVersionFilePath } from "@/scripts/lib/getIpaVersion";
 import { octokit } from "@/scripts/lib/github";
 import { readFileSync } from "node:fs";
+import { parseArgs } from "node:util";
 
 export const uploadDecrypted = async ({ appName }: { appName: AppName }) => {
-	const oneArg = getOneArg();
+	const { positionals } = parseArgs({ allowPositionals: true });
+	if (positionals.length !== 1) throw new Error("Missing file path");
+	const oneArg = positionals[0];
+
 	const filePath = resolvePath(oneArg);
 	const ipaVersion = await getIpaVersionFilePath(filePath);
 	const tagName = `${appName}_${ipaVersion}`;
