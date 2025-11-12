@@ -1,9 +1,7 @@
-import process from "node:process";
+import { parseArgs } from "node:util";
 
 export const getOneArg = () => {
-	if (process.argv.length < 2) throw new Error("Missing one argument");
-	const oneArg = process.argv[2];
-	return oneArg;
+	const { positionals } = parseArgs({ allowPositionals: true });
+	if (positionals.length !== 1) throw new Error("Missing one argument");
+	return positionals[0];
 };
-
-export const hasOneArg = () => process.argv.length === 3;
